@@ -1,0 +1,14 @@
+<ion-view view-title="Home">
+  <ion-content>
+    <h1>Welcome Home {{currentUser.username}}!</h1>
+    <h2>Your Current Pokemon: {{currentUser.startPokemon}}</h2>
+    <div ng-if="currentUser.tradesPending">
+      <div ng-repeat="trade in currentUser.tradesPending">
+        {{trade.guestName}} wants to trade their
+        {{trade.guestPokemon}}
+        for your {{trade.homePokemon}}
+        <button ng-click="accept(trade._id)">Accept Trade</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
