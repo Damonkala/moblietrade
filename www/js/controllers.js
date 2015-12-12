@@ -34,7 +34,7 @@ angular.module('starter.controllers', [])
   };
   $scope.accept = function(id) {
     console.log(id)
-    $http.post('http://localhost:3000/trades/accept/' + id)
+    $http.post('https://stark-savannah-6837.herokuapp.com/trades/accept/' + id)
     .then(function(data){
       console.log(data)
     })
@@ -46,7 +46,7 @@ angular.module('starter.controllers', [])
     tradeInfo.homeownerId = $scope.currentUser._id
     tradeInfo.guestId = homeowner._id
     tradeInfo.guestName = homeowner.username
-    $http.post('http://localhost:3000/trades', tradeInfo)
+    $http.post('https://stark-savannah-6837.herokuapp.com/trades', tradeInfo)
     .then(function(data){
       console.log(data);
       $scope.trade = data
@@ -73,7 +73,7 @@ angular.module('starter.controllers', [])
     var user = {};
     user.username = $scope.loginData.username;
     user.password = $scope.loginData.password;
-    $http.post('http://localhost:3000/users/login', user)
+    $http.post('https://stark-savannah-6837.herokuapp.com/users/login', user)
     .then(function(data){
       console.log(data)
       $scope.currentUser = data.data
@@ -97,7 +97,7 @@ angular.module('starter.controllers', [])
     newUser.password = $scope.registerData.password;
     newUser.startPokemon = $scope.registerData.startPokemon
     ;
-    $http.post('http://localhost:3000/users/register', newUser)
+    $http.post('https://stark-savannah-6837.herokuapp.com/users/register', newUser)
     .then(function(data){
       console.log(data)
       $scope.closeRegister();
@@ -106,14 +106,14 @@ angular.module('starter.controllers', [])
 })
 
 .controller('WorldmapCtrl', function($scope, $http) {
-  $http.get('http://localhost:3000/worldmap/').then(function(data){
+  $http.get('https://stark-savannah-6837.herokuapp.com/worldmap/').then(function(data){
     console.log("DATA", data.data)
     $scope.userdata = data.data
   })
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams, $http) {
-  $http.get('http://localhost:3000/homes/' + $stateParams.username).then(function(data){
+  $http.get('https://stark-savannah-6837.herokuapp.com/homes/' + $stateParams.username).then(function(data){
     $scope.homeowner = data.data
   })
 });
